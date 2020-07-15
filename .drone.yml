@@ -1,11 +1,15 @@
-pipeline:
-  build:
-    image: node
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: test
+  image: node
     commands:
       - npm install
       - npm test
-  publish:
-    image: plugins/docker
-    repo: drone/node-demo
-    secrets: [ docker_username, docker_password ]
-    dry_run: false # remove this to publish
+- name: publish
+    image: docker:stable-dind
+    commands:
+      - docker build
+      - docker run -d
