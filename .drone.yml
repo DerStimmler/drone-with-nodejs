@@ -4,12 +4,12 @@ name: default
 
 steps:
   - name: test
-      image: node
-      commands:
-        - npm install
-        - npm test
+    image: node
+    commands:
+      - npm install
+      - npm test
   - name: publish
-      image: docker:stable-dind
-      commands:
-        - docker build .
-        - docker run -d
+    image: docker:stable-dind
+    commands:
+      - docker build .
+      - docker run -d
