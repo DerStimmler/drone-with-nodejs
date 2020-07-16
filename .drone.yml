@@ -23,3 +23,10 @@ steps:
         path: /var/run/
       - name: docker_lib
         path: /var/lib/docker
+      - name: docker_sock
+        path: /var/run/docker.sock
+        
+volumes:
+  - name: docker_sock
+    host:
+      path: /var/run/docker.sock        
