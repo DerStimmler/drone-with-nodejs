@@ -1,8 +1,10 @@
 kind: pipeline
 type: docker
+name: drone-runner-1
 
 platform:
   os: linux
+  arch: arm
 
 steps:
   - name: test
