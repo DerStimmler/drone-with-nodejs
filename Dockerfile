@@ -1,4 +1,4 @@
-FROM node:9-alpine
+FROM arm32v7/node:current-alpine
 WORKDIR /usr/src/app
 ADD server.js .
 ADD node_modules node_modules
