@@ -18,3 +18,8 @@ steps:
     commands:
       - docker build -t node-js-test:${DRONE_COMMIT_SHA} .
       - docker run --name node-js-test -p 8086:3000 -d node-js-test:${DRONE_COMMIT_SHA}
+    volumes:
+      - name: docker_run
+        path: /var/run/
+      - name: docker_lib
+        path: /var/lib/docker
