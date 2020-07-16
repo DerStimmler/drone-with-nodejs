@@ -11,5 +11,5 @@ steps:
 - name: publish
     image: docker:stable-dind
     commands:
-      - docker build
+      - docker build .
       - docker run -d
