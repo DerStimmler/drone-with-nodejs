@@ -1,6 +1,6 @@
 kind: pipeline
 type: docker
-name: drone-runner-1
+name: drone-runner-docker
 
 platform:
   os: linux
@@ -14,6 +14,7 @@ steps:
       - npm test
   - name: publish
     image: docker:stable-dind
+    privileged: true
     commands:
-      - docker build .
-      - docker run -d
+      - docker build -t node-js-test:${DRONE_COMMIT_SHA} .
+      - docker run --name node-js-test -p 8086:3000 -d node-js-test:${DRONE_COMMIT_SHA}
